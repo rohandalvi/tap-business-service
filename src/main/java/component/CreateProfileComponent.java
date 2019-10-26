@@ -18,8 +18,4 @@ public class CreateProfileComponent {
     public ProfileResponse createProfile(Profile profile) {
         return profileDao.create(profile);
     }
-
-    public static void main(String[] args) {
-
-    }
 }
