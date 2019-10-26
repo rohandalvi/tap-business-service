@@ -41,6 +41,9 @@ public class ProfileDao {
 
     public ProfileResponse create(Profile profile) {
         createTable(Profile.class);
+        System.out.println(System.getenv("AWS_ACCESS_KEY_ID"));
+        System.out.println(System.getenv("AWS_SECRET_ACCESS_KEY"));
+
         System.out.println("DynamoMapper "+dynamoDBMapper);
         try {
             dynamoDBMapper.save(profile);
