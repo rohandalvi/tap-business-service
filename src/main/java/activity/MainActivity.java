@@ -10,6 +10,7 @@ public class MainActivity {
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new ActivityModule());
         CreateProfileComponent instance = injector.getInstance(CreateProfileComponent.class);
+        Spark.port(Integer.parseInt(System.getenv("PORT")));
         Spark.get("/createProfile", ((request, response) -> "Create profile requested"));
     }
 }
