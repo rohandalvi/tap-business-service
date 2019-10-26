@@ -4,5 +4,5 @@ import lombok.Data;
 
 @Data
 public class ProfileResponse {
-    ResponseCode responseCode;
+    private final ResponseCode responseCode;
 }
