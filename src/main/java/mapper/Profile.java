@@ -23,7 +23,7 @@ public class Profile {
         this.userId = userId;
     }
 
-    @DynamoDBHashKey(attributeName = "id")
+    @DynamoDBAttribute(attributeName = "id")
     public String getId() {
         return id;
     }
