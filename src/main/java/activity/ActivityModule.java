@@ -1,9 +1,7 @@
 package activity;
 
-import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
-import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.google.inject.AbstractModule;
@@ -11,8 +9,6 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import component.CreateProfileComponent;
 import implementations.ProfileDao;
-import implementations.UserProfile;
-import interfaces.IProfile;
 
 public class ActivityModule extends AbstractModule {
 
