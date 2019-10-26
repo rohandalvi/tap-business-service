@@ -27,10 +27,12 @@ public class ProfileDao {
         CreateTableRequest createTableRequest = dynamoDBMapper.generateCreateTableRequest(clazz);
         createTableRequest.setProvisionedThroughput(new ProvisionedThroughput(5L, 5L));
         try {
+            System.out.println("Creating table "+createTableRequest);
             client.createTable(createTableRequest);
         } catch (ResourceInUseException e) {
+
             // thrown if the table already exists, in which case it is a no-op.
-            log.info("Table already created "+clazz.getCanonicalName());
+            System.out.println("Table already created "+clazz.getCanonicalName());
         } catch (Exception e) {
             System.out.println("Some exception occurred " + e);
         }
