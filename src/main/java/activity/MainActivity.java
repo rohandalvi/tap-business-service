@@ -29,7 +29,11 @@ public class MainActivity {
         String userId = queryParamsMap.get(Keys.USER_ID).toString();
 
 
-        Profile profile = new Profile(userId, email, firstName, lastName);
+        Profile profile = new Profile();
+        profile.setEmail(email);
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
+        profile.setUserId(userId);
         System.out.println("Calling request with "+profile);
         return createProfileComponent.createProfile(profile).getResponseCode().name();
 
