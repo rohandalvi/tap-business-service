@@ -14,4 +14,9 @@ public class UserProfile implements IProfile {
     public ProfileResponse createProfile(Profile profile) {
         return profileDao.create(profile);
     }
+
+    @Override
+    public Profile getProfile(String userId) {
+        return profileDao.get(userId);
+    }
 }

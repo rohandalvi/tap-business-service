@@ -3,9 +3,11 @@ package mapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import lombok.ToString;
 
 import java.util.UUID;
 
+@ToString
 @DynamoDBTable(tableName = "Profile")
 public class Profile {
     private String id;

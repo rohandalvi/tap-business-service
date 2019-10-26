@@ -7,4 +7,6 @@ public interface IProfile {
 
     ProfileResponse createProfile(Profile profile);
 
+    Profile getProfile(String userId);
+
 }
