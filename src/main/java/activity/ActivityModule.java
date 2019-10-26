@@ -42,6 +42,6 @@ public class ActivityModule extends AbstractModule {
     }
     @Override
     protected void configure() {
-        bind(IProfile.class).to(UserProfile.class);
+        //bind(IProfile.class).to(UserProfile.class);
     }
 }
