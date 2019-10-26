@@ -10,6 +10,8 @@ import spark.Request;
 import spark.Response;
 import spark.Spark;
 
+import java.util.Map;
+
 
 public class MainActivity {
 
@@ -22,11 +24,12 @@ public class MainActivity {
     }
 
     private static String processRequest(Request request, Response response, CreateProfileComponent createProfileComponent) {
-        QueryParamsMap queryParamsMap = request.queryMap();
-        String firstName = queryParamsMap.get(Keys.FIRST_NAME).toString();
-        String lastName = queryParamsMap.get(Keys.LAST_NAME).toString();
-        String email = queryParamsMap.get(Keys.EMAIL).toString();
-        String userId = queryParamsMap.get(Keys.USER_ID).toString();
+
+        Map<String, String> params = request.params();
+        String firstName = params.get(Keys.FIRST_NAME);
+        String lastName = params.get(Keys.LAST_NAME);
+        String email = params.get(Keys.EMAIL);
+        String userId = params.get(Keys.USER_ID);
 
 
         Profile profile = new Profile();
