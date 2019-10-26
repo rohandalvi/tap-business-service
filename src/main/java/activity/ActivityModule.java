@@ -2,6 +2,7 @@ package activity;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.EnvironmentVariableCredentialsProvider;
+import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.google.inject.AbstractModule;
@@ -28,7 +29,9 @@ public class ActivityModule extends AbstractModule {
     @Singleton
     private AmazonDynamoDBClient getAmazonDynamoDBClient(AWSCredentials awsCredentials) {
 
-        return new AmazonDynamoDBClient(awsCredentials);
+        AmazonDynamoDBClient amazonDynamoDBClient = new AmazonDynamoDBClient(awsCredentials);
+        amazonDynamoDBClient.setRegion(Region.getRegion(REGION));
+        return amazonDynamoDBClient;
     }
 
     @Provides
