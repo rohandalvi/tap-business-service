@@ -4,13 +4,21 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import common.Keys;
 import component.CreateProfileComponent;
+import jdk.tools.jaotc.Main;
+import lombok.extern.log4j.Log4j;
 import mapper.Profile;
+import org.slf4j.LoggerFactory;
 import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
 
+import java.util.logging.Logger;
+
+
+@Log4j
 public class MainActivity {
+
 
     public static void main(String[] args) {
         Injector injector = Guice.createInjector(new ActivityModule());
@@ -26,7 +34,10 @@ public class MainActivity {
         String email = queryParamsMap.get(Keys.EMAIL).toString();
         String userId = queryParamsMap.get(Keys.USER_ID).toString();
 
-        return createProfileComponent.createProfile(new Profile(userId, email, firstName, lastName)).getResponseCode().name();
+
+        Profile profile = new Profile(userId, email, firstName, lastName);
+        System.out.println("Calling request with "+profile);
+        return createProfileComponent.createProfile(profile).getResponseCode().name();
 
     }
 
