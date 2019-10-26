@@ -4,19 +4,13 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import common.Keys;
 import component.CreateProfileComponent;
-import jdk.tools.jaotc.Main;
-import lombok.extern.log4j.Log4j;
 import mapper.Profile;
-import org.slf4j.LoggerFactory;
 import spark.QueryParamsMap;
 import spark.Request;
 import spark.Response;
 import spark.Spark;
 
-import java.util.logging.Logger;
 
-
-@Log4j
 public class MainActivity {
 
 
