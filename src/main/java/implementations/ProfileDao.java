@@ -40,7 +40,7 @@ public class ProfileDao {
     }
 
     public ProfileResponse create(Profile profile) {
-        createTable(profile.getClass());
+        createTable(Profile.class);
         System.out.println("DynamoMapper "+dynamoDBMapper);
         try {
             dynamoDBMapper.save(profile);

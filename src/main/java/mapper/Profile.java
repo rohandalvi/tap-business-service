@@ -8,11 +8,20 @@ import java.util.UUID;
 
 @DynamoDBTable(tableName = "Profile")
 public class Profile {
-    private String id = UUID.randomUUID().toString();
+    private String id;
     private String userId;
     private String email;
     private String firstName;
     private String lastName;
+
+    @DynamoDBAttribute(attributeName = "id")
+    public String getId() {
+        return UUID.randomUUID().toString();
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @DynamoDBHashKey(attributeName = "userId")
     public String getUserId() {
@@ -21,15 +30,6 @@ public class Profile {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    @DynamoDBAttribute(attributeName = "id")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     @DynamoDBAttribute(attributeName = "email")
