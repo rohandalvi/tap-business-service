@@ -12,13 +12,13 @@ import org.slf4j.LoggerFactory;
 import response.ProfileResponse;
 import response.ResponseCode;
 
-@Slf4j
+
 public class ProfileDao {
 
     private static Logger log = LoggerFactory.getLogger(ProfileDao.class);
     AmazonDynamoDBClient client;
     DynamoDBMapper dynamoDBMapper;
-    ProfileDao(AmazonDynamoDBClient client) {
+    public ProfileDao(AmazonDynamoDBClient client) {
         this.client = client;
         dynamoDBMapper = new DynamoDBMapper(client);
     }
