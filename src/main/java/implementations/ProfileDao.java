@@ -31,6 +31,8 @@ public class ProfileDao {
         } catch (ResourceInUseException e) {
             // thrown if the table already exists, in which case it is a no-op.
             log.info("Table already created "+clazz.getCanonicalName());
+        } catch (Exception e) {
+            System.out.println("Some exception occurred " + e);
         }
 
     }
@@ -38,7 +40,12 @@ public class ProfileDao {
     public ProfileResponse create(Profile profile) {
         createTable(profile.getClass());
         System.out.println("DynamoMapper "+dynamoDBMapper);
-        dynamoDBMapper.save(profile);
+        try {
+            dynamoDBMapper.save(profile);
+        } catch (Exception e) {
+            System.out.println("Encountered exception "+e);
+        }
+
         return new ProfileResponse(ResponseCode.OK);
     }
 }
