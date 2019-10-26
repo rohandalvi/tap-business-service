@@ -16,6 +16,7 @@ public class CreateProfileComponent {
     private final ProfileDao profileDao;
 
     public ProfileResponse createProfile(Profile profile) {
+        System.out.println("ProfileDao "+profileDao);
         return profileDao.create(profile);
     }
 }

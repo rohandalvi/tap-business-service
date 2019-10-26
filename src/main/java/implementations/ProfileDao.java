@@ -36,6 +36,7 @@ public class ProfileDao {
     }
 
     public ProfileResponse create(Profile profile) {
+        System.out.println("DynamoMapper "+dynamoDBMapper);
         dynamoDBMapper.save(profile);
         return new ProfileResponse(ResponseCode.OK);
     }
