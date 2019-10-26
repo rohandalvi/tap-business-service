@@ -1,22 +1,17 @@
 package component;
 
-import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
-import implementations.ProfileDao;
+import implementations.UserProfile;
 import lombok.RequiredArgsConstructor;
 import mapper.Profile;
 import response.ProfileResponse;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-
 @RequiredArgsConstructor
 public class CreateProfileComponent {
 
-    private final ProfileDao profileDao;
+    private final UserProfile userProfile;
 
     public ProfileResponse createProfile(Profile profile) {
-        System.out.println("ProfileDao "+profileDao);
-        return profileDao.create(profile);
+        System.out.println("Creating profile "+profile);
+        return userProfile.createProfile(profile);
     }
 }

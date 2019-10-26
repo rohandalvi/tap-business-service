@@ -10,6 +10,7 @@ import com.google.inject.Provides;
 import com.google.inject.Singleton;
 import component.CreateProfileComponent;
 import implementations.ProfileDao;
+import implementations.UserProfile;
 
 public class ActivityModule extends AbstractModule {
 
@@ -20,11 +21,19 @@ public class ActivityModule extends AbstractModule {
     private ProfileDao getProfileDao(AmazonDynamoDBClient amazonDynamoDBClient) {
         return new ProfileDao(amazonDynamoDBClient);
     }
+
     @Provides
     @Singleton
-    private CreateProfileComponent createProfileComponent(ProfileDao profileDao) {
-        return new CreateProfileComponent(profileDao);
+    private UserProfile getUserProfile(ProfileDao profileDao) {
+        return new UserProfile(profileDao);
     }
+
+    @Provides
+    @Singleton
+    private CreateProfileComponent createProfileComponent(UserProfile userProfile) {
+        return new CreateProfileComponent(userProfile);
+    }
+
     @Provides
     @Singleton
     private AmazonDynamoDBClient getAmazonDynamoDBClient(AWSCredentials awsCredentials) {

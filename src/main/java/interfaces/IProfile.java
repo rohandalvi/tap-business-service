@@ -1,9 +1,10 @@
 package interfaces;
 
+import mapper.Profile;
 import response.ProfileResponse;
 
 public interface IProfile {
 
-    ProfileResponse createProfile(String userId, String password, String firstName, String lastName);
+    ProfileResponse createProfile(Profile profile);
 
 }
