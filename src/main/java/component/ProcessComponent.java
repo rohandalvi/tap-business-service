@@ -16,6 +16,7 @@ public class ProcessComponent<T> extends GenericComponent<T> {
         switch (requestType) {
             case CREATE_PROFILE:
                 Request request = (Request) t;
+                System.out.println("Triggering create profile from process component");
                 profile.createProfile(request);
             default: throw new RuntimeException("Request type "+requestType+" not implemented");
         }

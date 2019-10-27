@@ -17,6 +17,7 @@ public class RouterComponent {
         Spark.port(Integer.parseInt(System.getenv("PORT")));
     }
     public void route() {
+        System.out.println("Initialized router");
         path("/profile", () -> {
             post("/create", ((request, response) -> process(request, response, RequestType.CREATE_PROFILE)));
         });
@@ -25,6 +26,7 @@ public class RouterComponent {
     private String process(Request request, Response response, RequestType requestType) {
         switch (requestType) {
             case CREATE_PROFILE:
+                System.out.println("Routing to profile creation");
                 return genericComponent.process(request, requestType).name();
             default: throw new RuntimeException("Request type "+requestType+" not implemented");
         }
