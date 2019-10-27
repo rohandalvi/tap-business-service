@@ -44,6 +44,7 @@ public class ProfileDao {
         createTable(Profile.class);
         System.out.println("DynamoMapper "+dynamoDBMapper);
         try {
+            System.out.println("Profile object "+profile);
             dynamoDBMapper.save(profile);
         } catch (Exception e) {
             System.out.println("Encountered exception "+e);
