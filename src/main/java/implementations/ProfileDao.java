@@ -7,15 +7,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedQueryList;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.model.ResourceInUseException;
-import lombok.extern.slf4j.Slf4j;
 import mapper.Profile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import response.ProfileResponse;
 import response.ResponseCode;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class ProfileDao {
@@ -56,15 +52,13 @@ public class ProfileDao {
         return new ProfileResponse(ResponseCode.OK);
     }
 
-    public Profile get(String userId) {
-        PaginatedQueryList query = dynamoDBMapper.query(Profile.class, buildQueryExpression(userId));
-        Profile profile = (Profile) query.stream().findFirst().get();
-        return profile;
+    public Profile get(Profile profile) {
+        PaginatedQueryList query = dynamoDBMapper.query(Profile.class, buildQueryExpression(profile));
+        Profile profile1 = (Profile) query.stream().findFirst().get();
+        return profile1;
     }
 
-    private DynamoDBQueryExpression buildQueryExpression(String userId) {
-        Profile profile = new Profile();
-        profile.setUserId(userId);
+    private DynamoDBQueryExpression buildQueryExpression(Profile profile) {
         return new DynamoDBQueryExpression<Profile>().withHashKeyValues(profile);
     }
 }

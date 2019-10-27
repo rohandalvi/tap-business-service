@@ -2,11 +2,12 @@ package interfaces;
 
 import mapper.Profile;
 import response.ProfileResponse;
+import spark.Request;
 
 public interface IProfile {
 
-    ProfileResponse createProfile(Profile profile);
+    ProfileResponse createProfile(Request request);
 
-    Profile getProfile(String userId);
+    Profile getProfile(Request request);
 
 }

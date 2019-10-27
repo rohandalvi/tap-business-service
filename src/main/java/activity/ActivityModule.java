@@ -8,9 +8,12 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
-import component.CreateProfileComponent;
+import component.GenericComponent;
+import component.ProcessComponent;
+import component.RouterComponent;
 import implementations.ProfileDao;
 import implementations.UserProfile;
+import interfaces.IProfile;
 
 public class ActivityModule extends AbstractModule {
 
@@ -24,14 +27,19 @@ public class ActivityModule extends AbstractModule {
 
     @Provides
     @Singleton
-    private UserProfile getUserProfile(ProfileDao profileDao) {
+    private IProfile getIProfile(ProfileDao profileDao) {
         return new UserProfile(profileDao);
     }
 
     @Provides
     @Singleton
-    private CreateProfileComponent createProfileComponent(UserProfile userProfile) {
-        return new CreateProfileComponent(userProfile);
+    private GenericComponent genericComponent(IProfile profile) {
+        return new ProcessComponent(profile);
+    }
+    @Provides
+    @Singleton
+    private RouterComponent getRouterComponent(GenericComponent genericComponent) {
+        return new RouterComponent(genericComponent);
     }
 
     @Provides
