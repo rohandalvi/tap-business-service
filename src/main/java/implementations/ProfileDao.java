@@ -61,7 +61,7 @@ public class ProfileDao {
         } catch (Exception e) {
             System.out.println("Encountered exception "+e);
         }
-
+        return null;
     }
 
     private DynamoDBQueryExpression buildQueryExpression(Profile profile) {
