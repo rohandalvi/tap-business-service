@@ -20,6 +20,7 @@ public class RouterComponent {
         System.out.println("Initialized router");
         path("/profile", () -> {
             post("/create", ((request, response) -> process(request, response, RequestType.CREATE_PROFILE)));
+            get("/get", ((request, response) -> process(request, response, RequestType.GET_PROFILE)));
         });
     }
 
@@ -27,7 +28,10 @@ public class RouterComponent {
         switch (requestType) {
             case CREATE_PROFILE:
                 System.out.println("Routing to profile creation");
-                return genericComponent.process(request, requestType).name();
+                return genericComponent.process(request, requestType);
+            case GET_PROFILE:
+                System.out.println("Routing to get profile");
+                return genericComponent.process(request, requestType);
             default: throw new RuntimeException("Request type "+requestType+" not implemented");
         }
     }

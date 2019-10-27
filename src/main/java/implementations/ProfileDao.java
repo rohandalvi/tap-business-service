@@ -54,9 +54,14 @@ public class ProfileDao {
     }
 
     public Profile get(Profile profile) {
-        PaginatedQueryList query = dynamoDBMapper.query(Profile.class, buildQueryExpression(profile));
-        Profile profile1 = (Profile) query.stream().findFirst().get();
-        return profile1;
+        try {
+            PaginatedQueryList query = dynamoDBMapper.query(Profile.class, buildQueryExpression(profile));
+            Profile profile1 = (Profile) query.stream().findFirst().get();
+            return profile1;
+        } catch (Exception e) {
+            System.out.println("Encountered exception "+e);
+        }
+
     }
 
     private DynamoDBQueryExpression buildQueryExpression(Profile profile) {
