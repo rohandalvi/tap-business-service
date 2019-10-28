@@ -1,0 +1,13 @@
+{
+  "complexEntries": {
+    "hostname": "www.the-tap-app.herokuapp.com",
+    "dependentServiceMap": {
+      "messageService": "the-tap-app-message.herokuapp.com",
+      "authService": "the-tap-app-auth.herokuapp.com"
+    },
+    "services": [
+      "message",
+      "auth"
+    ]
+  }
+}

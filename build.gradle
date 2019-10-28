@@ -37,4 +37,6 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile "com.sparkjava:spark-core:2.8.0" // add to build.gradle (for Java users)
+    compile group: 'net.jmob', name: 'guice.conf', version: '1.4.1'
+
 }
