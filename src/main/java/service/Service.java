@@ -11,6 +11,7 @@ public class Service {
     private ServiceConfiguration serviceConfiguration;
 
     public ServiceConfiguration getServiceConfiguration() {
+        System.out.println("Service Configuration "+serviceConfiguration.getHostname() +" and "+serviceConfiguration.getServices());
         return serviceConfiguration;
     }
 
