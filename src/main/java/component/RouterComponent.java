@@ -1,6 +1,8 @@
 package component;
 
 import common.RequestType;
+import implementations.UserProfile;
+import interfaces.IProfile;
 import spark.Request;
 import spark.Response;
 import spark.Spark;

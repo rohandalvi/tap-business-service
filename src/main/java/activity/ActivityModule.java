@@ -14,8 +14,6 @@ import component.RouterComponent;
 import implementations.ProfileDao;
 import implementations.UserProfile;
 import interfaces.IProfile;
-import net.jmob.guice.conf.core.ConfigurationModule;
-import service.Service;
 
 public class ActivityModule extends AbstractModule {
 
@@ -61,7 +59,5 @@ public class ActivityModule extends AbstractModule {
     @Override
     protected void configure() {
         //bind(IProfile.class).to(UserProfile.class);
-        install(new ConfigurationModule());
-        requestInjection(Service.class);
     }
 }
