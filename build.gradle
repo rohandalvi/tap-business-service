@@ -33,8 +33,9 @@ dependencies {
     implementation platform('software.amazon.awssdk:bom:2.5.29')
     implementation 'software.amazon.awssdk:dynamodb'
     compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.9.0'
-    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
     compile "com.sparkjava:spark-core:2.8.0" // add to build.gradle (for Java users)
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+
 }

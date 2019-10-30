@@ -4,17 +4,20 @@ import common.Keys;
 import interfaces.IProfile;
 import lombok.AllArgsConstructor;
 import mapper.Profile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import response.ProfileResponse;
 import spark.Request;
 
 @AllArgsConstructor
 public class UserProfile implements IProfile {
 
+    private static final Logger log = LoggerFactory.getLogger(UserProfile.class);
     private ProfileDao profileDao;
 
     @Override
     public ProfileResponse createProfile(Request request) {
-        System.out.println("Creating profile from UserProfile class");
+        log.info("Creating profile from UserProfile class {}", request);
         return profileDao.create(transform(request));
     }
 

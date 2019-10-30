@@ -28,26 +28,24 @@ public class ProfileDao {
         CreateTableRequest createTableRequest = dynamoDBMapper.generateCreateTableRequest(clazz);
         createTableRequest.setProvisionedThroughput(new ProvisionedThroughput(5L, 5L));
         try {
-            System.out.println("Creating table "+createTableRequest);
+            log.info("Creating table {}", createTableRequest);
             client.createTable(createTableRequest);
         } catch (ResourceInUseException e) {
 
             // thrown if the table already exists, in which case it is a no-op.
-            System.out.println("Table already created "+clazz.getCanonicalName());
+            log.info("Table already created {}", clazz.getCanonicalName());
         } catch (Exception e) {
-            System.out.println("Some exception occurred " + e);
+            log.error("Some exception occurred ", e);
         }
 
     }
 
     public ProfileResponse create(Profile profile) {
         createTable(Profile.class);
-        System.out.println("DynamoMapper "+dynamoDBMapper);
         try {
-            System.out.println("Profile object "+profile);
             dynamoDBMapper.save(profile);
         } catch (Exception e) {
-            System.out.println("Encountered exception "+e);
+            log.error("Encountered exception ", e);
         }
 
         return new ProfileResponse(ResponseCode.OK);
@@ -59,7 +57,7 @@ public class ProfileDao {
             Profile profile1 = (Profile) query.stream().findFirst().get();
             return profile1;
         } catch (Exception e) {
-            System.out.println("Encountered exception "+e);
+            log.error("Encountered exception ", e);
         }
         return null;
     }
