@@ -18,6 +18,7 @@ public class UserProfile implements IProfile {
     @Override
     public ProfileResponse createProfile(Request request) {
         log.info("Creating profile from UserProfile class {}", request);
+        System.out.println(String.format("Creating profile from UserProfile class %s ", request));
         return profileDao.create(transform(request));
     }
 

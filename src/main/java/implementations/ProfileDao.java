@@ -29,23 +29,30 @@ public class ProfileDao {
         createTableRequest.setProvisionedThroughput(new ProvisionedThroughput(5L, 5L));
         try {
             log.info("Creating table {}", createTableRequest);
+            System.out.println(String.format("Creating table %s", createTableRequest.getTableName()));
             client.createTable(createTableRequest);
         } catch (ResourceInUseException e) {
 
             // thrown if the table already exists, in which case it is a no-op.
             log.info("Table already created {}", clazz.getCanonicalName());
+            System.out.println(String.format("Table already created %s", clazz.getCanonicalName()));
         } catch (Exception e) {
             log.error("Some exception occurred ", e);
+            System.out.println(String.format("Some exception occurred %s", e));
         }
 
     }
 
     public ProfileResponse create(Profile profile) {
+        System.out.println(String.format("Received request to create profile %s", profile));
+        System.out.println(String.format("Creating table if not existing"));
         createTable(Profile.class);
         try {
+            System.out.println(String.format("Saving profile to table"));
             dynamoDBMapper.save(profile);
         } catch (Exception e) {
             log.error("Encountered exception ", e);
+            System.out.println(String.format("Encountered exception %s", e));
         }
 
         return new ProfileResponse(ResponseCode.OK);
