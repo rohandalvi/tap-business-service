@@ -28,9 +28,11 @@ public class RouterComponent {
     }
 
     private String process(Request request, Response response, RequestType requestType) {
+        System.out.println(String.format("Received request to process"));
         switch (requestType) {
             case CREATE_PROFILE:
                 log.info("Routing to profile creation");
+                System.out.println(String.format("Routing to profile creation"));
                 return genericComponent.process(request, requestType);
             case GET_PROFILE:
                 log.info("Routing to get profile");
